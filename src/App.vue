@@ -2,7 +2,7 @@
   <v-app>
     <v-content>
       <person-grid :people="people"></person-grid>
-      <v-btn @click="getData">Get Data!!</v-btn>
+     <!--  <v-btn @click="getData">Get Data!!</v-btn> -->
     </v-content>
   </v-app>
 </template>
@@ -20,14 +20,13 @@ export default {
   data: () => {
     return {
       people: [],
-      planets: []
     }
   },
   created: function () {
     // `this` points to the vm instance
     let vm = this
-      return axios.get('https://swapi.co/api/planets').then(response => {
-        vm.planets = response.data.results
+      return axios.get('https://swapi.co/api/people').then(response => {
+        vm.people = response.data.results
       }).catch(error => console.error(error))
   },
   methods: {
