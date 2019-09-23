@@ -1,36 +1,42 @@
 <template>
   <v-app>
-    <v-app-bar app>
-      <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn
-        text
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-      >
-        <span class="mr-2">Latest Release</span>
-      </v-btn>
-    </v-app-bar>
-
     <v-content>
-      <HelloWorld/>
+      <person-grid :people="people"></person-grid>
+      <v-btn @click="getData">Get Data!!</v-btn>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import PersonGrid from './components/PersonGrid'
+//import { people } from './assets/people'
+import axios from 'axios'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+    PersonGrid,
   },
-  data: () => ({
-    //
-  }),
-};
+  data: () => {
+    return {
+      people: [],
+      planets: []
+    }
+  },
+  created: function () {
+    // `this` points to the vm instance
+    let vm = this
+      return axios.get('https://swapi.co/api/planets').then(response => {
+        vm.planets = response.data.results
+      }).catch(error => console.error(error))
+  },
+  methods: {
+    getData() {
+      let vm = this
+      return axios.get('https://swapi.co/api/people').then(response => {
+        vm.people = response.data.results
+      }).catch(error => console.error(error))
+    }
+  }
+}
 </script>
