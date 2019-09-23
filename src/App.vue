@@ -1,41 +1,47 @@
 <template>
   <v-app>
-    <v-content>
-      <person-grid :people="people"></person-grid>
-     <!--  <v-btn @click="getData">Get Data!!</v-btn> -->
-    </v-content>
+    <projHeader/>
+    <hr>
+    <v-container align-center>
+      <v-row>
+        <server/>
+        <serverDetails/>
+      </v-row>
+    </v-container>
+    <hr>
+    <projFooter/>
   </v-app>
 </template>
 
 <script>
-import PersonGrid from './components/PersonGrid'
-//import { people } from './assets/people'
-import axios from 'axios'
+import projHeader from './components/Header'
+import server from './components/Server'
+import serverDetails from './components/ServerDetails'
+import projFooter from './components/projFooter'
 
 export default {
   name: 'App',
   components: {
-    PersonGrid,
+    projHeader,
+    server,
+    serverDetails,
+    projFooter
+  },
+  props: {
+    currentServer: {
+      default: 0,
+      type: Number
+    },
+    currentServerStatus: {
+      default: 'Server Details are currently unavailable',
+      type: String
+    }
   },
   data: () => {
     return {
-      people: [],
+      //
     }
   },
-  created: function () {
-    // `this` points to the vm instance
-    let vm = this
-      return axios.get('https://swapi.co/api/people').then(response => {
-        vm.people = response.data.results
-      }).catch(error => console.error(error))
-  },
-  methods: {
-    getData() {
-      let vm = this
-      return axios.get('https://swapi.co/api/people').then(response => {
-        vm.people = response.data.results
-      }).catch(error => console.error(error))
-    }
-  }
+  
 }
 </script>
