@@ -19,7 +19,6 @@ export default {
   components: {
     PersonGrid,
     AustinWright
-
   },
   data: () => {
     return {
