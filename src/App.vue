@@ -1,9 +1,9 @@
 <template>
   <v-app>
-    <v-content>
+    <v-content  class="d-flex flex-column align-center">
       <person-grid :people="people"></person-grid>
      <!--  <v-btn @click="getData">Get Data!!</v-btn> -->
-     <austin-wright></austin-wright>
+      <austin-wright></austin-wright>
     </v-content>
   </v-app>
 </template>
