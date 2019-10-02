@@ -26,9 +26,9 @@ export default {
   created: function () {
     // `this` points to the vm instance
     let vm = this
-      return axios.get('https://swapi.co/api/planets').then(response => {
-        vm.planets = response.data.results
-      }).catch(error => console.error(error))
+      fetch('https://jsonplaceholder.typicode.com/todos/1')
+  .then(response => response.json())
+  .then(json => console.log(json))
   },
   methods: {
     getData() {
