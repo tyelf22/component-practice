@@ -2,7 +2,7 @@
   <v-app>
     <v-content>
       <person-grid :people="people"></person-grid>
-      <v-btn @click="getData">Get Data!!</v-btn>
+     <!--  <v-btn @click="getData">Get Data!!</v-btn> -->
     </v-content>
   </v-app>
 </template>
@@ -20,7 +20,6 @@ export default {
   data: () => {
     return {
       people: [],
-      planets: []
     }
   },
   created: function () {
